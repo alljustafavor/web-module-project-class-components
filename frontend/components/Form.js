@@ -9,15 +9,22 @@ export default class Form extends React.Component {
   }
   onSubmit = evt => {
     evt.preventDefault();
-    this.props.addTodo(this.state.name)
+    this.props.addTodo(this.state.name);
+    this.setState({
+      ...this.state,
+      name: ''
+    })
   }
 
   onChange = evt => {
     const { value } = evt.target;
     this.setState({
+      ...this.state,
       name: value
     })
   }
+
+
 
   render() {
     return (
@@ -25,7 +32,7 @@ export default class Form extends React.Component {
           <input type="text" value={this.state.name} placeholder='add a task' onChange={this.onChange}/>
           <input type='submit' />
         <div>
-          <button>Completed</button>
+          {/* <input Completed /> */}
         </div>
       </form>
     )
